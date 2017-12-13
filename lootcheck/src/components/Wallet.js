@@ -10,7 +10,7 @@ export class Wallet extends Component {
     this.state = { balance: undefined };
   }
 
-  updateBalance = event => this.setState({ balance: parseInt(event.target.value) });
+  updateBalance = event => this.setState({ balance: parseInt(event.target.value, 10) });
 
   deposit = () => this.props.deposit(this.state.balance);
 
@@ -29,4 +29,4 @@ export class Wallet extends Component {
   }
 }
 
-export default connect(state => { return { balance: state } }, { deposit, withdraw })(Wallet);
+export default connect(state => { return { balance: state.balance } }, { deposit, withdraw })(Wallet);
